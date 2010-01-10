@@ -8,7 +8,7 @@ module Resque
     end
     
     def self.excluded_environments
-      @@excluded_environments ||= []
+      @@excluded_environments ||= [:test]
     end
 
     def self.included(base)
@@ -17,12 +17,9 @@ module Resque
         alias_method :dispatch_and_deliver!, :dispatch_and_deliver
         
         def dispatch_and_deliver(method, mail_params)
-          puts "dispatching"
           if ::Resque::Mailer.excluded_environments.include?(Merb.env.to_sym)
-            puts "old impl"
             dispatch_and_deliver!(method, mail_params)
           else
-            puts "putting to resque"
             ::Resque.enqueue(self.class, @params, method, mail_params)
           end
         end
