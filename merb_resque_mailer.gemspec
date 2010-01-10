@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.email = %q{marcin.kulik@gmail.com}
   s.has_rdoc = false
   s.homepage = %q{http://sickill.net}
-  s.summary = %q{Merb plugin for putting mail deliveries onto Resque queue}
-  s.files = [ "lib/merb_resque_mailer.rb" ]
-  s.add_dependency 'merb-mailer'
+  s.summary = %q{Merb plugin for putting mail delivery jobs onto Resque queue}
+  s.files = [ "lib/merb_resque_mailer.rb", "README.md" ]
   s.add_dependency 'resque'
 end
+
