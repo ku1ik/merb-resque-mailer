@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{merb_resque_mailer}
-  s.version = "0.1"
+  s.version = "0.2"
   s.platform = Gem::Platform::RUBY
   s.date = %q{2010-01-10}
   s.authors = ["Marcin Kulik"]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.has_rdoc = false
   s.homepage = %q{http://sickill.net}
   s.summary = %q{Merb plugin for putting mail delivery jobs onto Resque queue}
-  s.files = [ "lib/merb_resque_mailer.rb", "README.md" ]
+  s.files = [ "lib/merb_resque_mailer.rb", "README.md", "spec/spec_helper.rb", "spec/merb_resque_mailer_spec.rb" ]
   s.add_dependency 'resque'
 end
 
