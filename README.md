@@ -24,6 +24,8 @@ Jobs are added to "mailer" queue so you should start at least one worker listeni
 
     QUEUE=mailer rake merb_env resque:work
 
+Be sure you have 'resque/tasks' required in your Rakefile (or somewhere in lib/tasks/), it's required for above task to work. 
+
 From now on all emails will be sent asynchronously using Resque worker(s).
 
 Installation
