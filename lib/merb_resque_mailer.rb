@@ -32,7 +32,7 @@ module Resque
       end
  
       def perform(params, method, mail_params)
-        new(params).dispatch_and_deliver!(method, mail_params)
+        new(params).dispatch_and_deliver!(method.to_sym, mail_params)
       end
     end
 

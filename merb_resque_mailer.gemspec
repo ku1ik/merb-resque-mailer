@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name = %q{merb_resque_mailer}
-  s.version = "0.2"
+  s.version = "0.3"
   s.platform = Gem::Platform::RUBY
-  s.date = %q{2010-01-10}
+  s.date = %q{2010-01-19}
   s.authors = ["Marcin Kulik"]
   s.email = %q{marcin.kulik@gmail.com}
   s.has_rdoc = false
