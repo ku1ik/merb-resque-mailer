@@ -33,9 +33,15 @@ Installation
 
 Gem is hosted on gemcutter.org, simply install it by:
 
-    gem install merb_resque_mailer
+    gem install merb-resque-mailer
 
-and require it in your app (or just add it to bundler's Gemfile).
+and require it in your app:
+
+    require "merb-resque-mailer"
+
+If using bundler add it to Gemfile:
+
+    gem "merb-resque-mailer"
 
 Configuration
 -------------
