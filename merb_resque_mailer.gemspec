@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{merb_resque_mailer}
+  s.name = %q{merb-resque-mailer}
   s.version = "0.3"
   s.platform = Gem::Platform::RUBY
   s.date = %q{2010-01-19}
@@ -13,4 +13,3 @@ Gem::Specification.new do |s|
   s.files = [ "lib/merb_resque_mailer.rb", "README.md", "spec/spec_helper.rb", "spec/merb_resque_mailer_spec.rb" ]
   s.add_dependency 'resque'
 end
-
