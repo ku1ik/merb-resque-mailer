@@ -2,6 +2,14 @@ require 'resque'
 
 module Resque
   module Mailer
+
+    def self.queue_name
+      @@queue_name ||= "mailer"
+    end
+
+    def self.queue_name=(name)
+      @@queue_name = name
+    end
     
     def self.excluded_environments=(*environments)
       @@excluded_environments = environments && environments.flatten.collect! { |env| env.to_sym }
