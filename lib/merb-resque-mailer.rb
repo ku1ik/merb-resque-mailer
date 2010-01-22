@@ -3,21 +3,17 @@ require 'resque'
 module Resque
   module Mailer
 
-    def self.queue_name
-      @@queue_name ||= "mailer"
-    end
-
-    def self.queue_name=(name)
-      @@queue_name = name
+    class << self
+      attr_accessor :queue_name
+      attr_reader :excluded_environments
     end
     
-    def self.excluded_environments=(*environments)
-      @@excluded_environments = environments && environments.flatten.collect! { |env| env.to_sym }
+    def self.excluded_environments=(envs)
+      @excluded_environments = envs.map { |e| e.to_sym }
     end
     
-    def self.excluded_environments
-      @@excluded_environments ||= [:test]
-    end
+    self.queue_name = "mailer"
+    self.excluded_environments = [:test]
 
     def self.included(base)
       base.extend(ClassMethods)
@@ -36,7 +32,7 @@ module Resque
  
     module ClassMethods
       def queue
-        :mailer
+        Resque::Mailer.queue_name
       end
  
       def perform(params, method, mail_params)

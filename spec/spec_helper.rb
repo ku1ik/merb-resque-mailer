@@ -14,7 +14,7 @@ end
 Merb.start_environment(:testing => true, :adapter => 'runner', :environment => 'test')
 Merb::Mailer.delivery_method = :test_send
 
-require 'merb_resque_mailer'
+require 'merb-resque-mailer'
 
 Spec::Runner.configure do |config|
   config.include Merb::Test::RequestHelper

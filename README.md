@@ -53,8 +53,11 @@ or
 
     Resque::Mailer.excluded_environments << :development
 
+If you want to put deliveries to other queue than default "mailer" you can set it like this:
+
+    Resque::Mailer.queue_name = "notifications"
+
 Credits
 -------
 
 This piece of code was inspired by work of [Nick Plante](http://github.com/zapnap) who created [resque_mailer](http://github.com/zapnap/resque_mailer) for Rails' ActionMailer. Rewritten to work with Merb Mailer by [Marcin Kulik](http://github.com/sickill).
-

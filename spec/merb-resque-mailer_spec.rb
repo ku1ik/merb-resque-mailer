@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-::Resque::Mailer.excluded_environments = []
+Resque::Mailer.excluded_environments = []
+Resque::Mailer.queue_name = "foobar"
 
 class TestMailer < Merb::MailController
   include Resque::Mailer
@@ -33,11 +34,11 @@ describe TestMailer do
     end 
     
     it 'should not deliver through Resque for excluded environments' do
-      excluded_envs = [:test, :staging]
-      ::Resque::Mailer.excluded_environments = excluded_envs
+      excluded_envs = ["test", :staging]
+      Resque::Mailer.excluded_environments = excluded_envs
 
       excluded_envs.each do |env|
-        Merb.should_receive(:env).and_return(env)
+        Merb.should_receive(:env).and_return(env.to_sym)
         Resque.should_not_receive(:enqueue)
         delivery.call
       end
@@ -50,8 +51,10 @@ describe TestMailer do
     end
   end
 
-  it 'should should have queue name' do
-    TestMailer.should respond_to(:queue)
+  describe ".queue" do
+    it "should return default queue name" do
+      TestMailer.queue.should == "foobar"
+    end
   end
   
   describe ".perform" do
